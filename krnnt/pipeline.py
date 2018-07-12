@@ -156,6 +156,10 @@ class Preprocess:
     def maca(batch):
         p = Popen(['maca-analyse', '-c', 'morfeusz-nkjp-official', '-l'], stdout=PIPE, stdin=PIPE, stderr=PIPE)
         stdout = p.communicate(input='\n'.join(batch).encode('utf-8'))[0]
+        print('----------------MACA---------------')
+        print(stdout)
+        print('-----------------------------------')
+        print([i for i in stdout.decode('utf-8').split('\n\n') if len(i) > 0])
         return  [i for i in stdout.decode('utf-8').split('\n\n') if len(i) > 0]
 
     @staticmethod
