@@ -158,8 +158,8 @@ class Preprocess:
         stdout = p.communicate(input='\n'.join(batch).encode('utf-8'))[0]
         print('----------------MACA---------------')
         print(stdout)
-        print('-----------------------------------')
         print([i for i in stdout.decode('utf-8').split('\n\n') if len(i) > 0])
+        print('-----------------------------------')
         return  [i for i in stdout.decode('utf-8').split('\n\n') if len(i) > 0]
 
     @staticmethod
@@ -182,6 +182,10 @@ class Preprocess:
             token = Preprocess.construct(token_line, lemma_lines) #80%
             if token is None: continue
             tokens.append(token)
+
+        print('----------------PARSE---------------')
+        print(tokens)
+        print('-----------------------------------')
 
         return tokens
 
